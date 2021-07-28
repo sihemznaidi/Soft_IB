@@ -1,5 +1,6 @@
 package tn.esprit.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,5 +41,26 @@ OperationRepository operationrep;
 		// TODO Auto-generated method stub
 		return operationrep.findById(id).get();
 	}
+
+	@Override
+	public List<Operation> listOperationParCompte(String idcompte) {
+		return operationrep.listOperationParCompte(idcompte);
+	}
+
+	@Override
+	public List<Operation> findAllByDateBetween(Date date1 ,Date date2) {	
+		return operationrep.findAllByDateBetween(date1, date2);
+	}
+
+	@Override
+	public List<Operation> listOperationParCompteEtDates(String idcompte,Date date1, Date date2) {
+		return operationrep.listOperationParCompteEtDates(idcompte,date1, date2);
+	}
+
+	@Override
+	public float GetMoyenneDesTransactions(Date datejour) {
+			return operationrep.GetMoyenneDesTransactions(datejour);
+		}
+	
 
 }

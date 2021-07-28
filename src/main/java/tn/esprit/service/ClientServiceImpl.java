@@ -41,4 +41,10 @@ ClientRepository clientrep;
 		return clientrep.findById(id).get();
 	}
 
+	@Override
+	public float sommeSalaire() {
+		// TODO Auto-generated method stub
+		return clientrep.sommeSalaire();
+	}
+
 }

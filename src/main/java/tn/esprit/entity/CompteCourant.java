@@ -38,5 +38,10 @@ public class CompteCourant extends Compte implements Serializable {
 		super();
 		this.decouvert = decouvert;
 	}
+
+	@Override
+	public String toString() {
+		return "CompteCourant [decouvert=" + decouvert + ", toString()=" + super.toString() + "]";
+	}
 	
 }

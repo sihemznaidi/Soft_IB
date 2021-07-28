@@ -9,6 +9,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
@@ -46,7 +47,7 @@ private Credit credit;
 @OneToOne
 private Users user;
 
-@OneToMany(cascade = CascadeType.ALL, mappedBy="client_compte")
+@OneToMany(cascade = CascadeType.ALL, mappedBy="client_compte",fetch=FetchType.EAGER)
 private List<Compte> comptes;
 
 public int getCodeClient() {

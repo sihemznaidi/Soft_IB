@@ -10,6 +10,12 @@ import javax.persistence.Entity;
 @DiscriminatorValue("versement")
 public class Versement extends Operation implements Serializable {
 
+	
+	public Versement() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	public Versement(int num, float montant, Date date) {
 		super(num, montant, date);
 		// TODO Auto-generated constructor stub

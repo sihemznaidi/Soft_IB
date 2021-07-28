@@ -11,4 +11,5 @@ public interface IClientService {
 	public void deleteClient(int id);
 	public Client updateClient(Client u);
 	public Client retrieveClient(int id);
+	public float sommeSalaire();
 }

@@ -15,6 +15,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 @DiscriminatorValue("operation")
@@ -25,6 +27,7 @@ public class Operation implements Serializable{
 private int num;
 private float montant;
 @Temporal(TemporalType.DATE)
+@DateTimeFormat(pattern="yyyy-mm-dd")
 private Date date;
 
 @ManyToOne
@@ -32,6 +35,11 @@ private Compte compte;
 
 @ManyToOne
 private Historique historique;
+
+public Operation() {
+	super();
+	// TODO Auto-generated constructor stub
+}
 
 public Operation(int num, float montant, Date date) {
 	super();

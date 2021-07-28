@@ -1,5 +1,6 @@
 package tn.esprit.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,5 +38,18 @@ CompteRepository compterep;
 	public Compte retrieveCompte(String id) {
 		return compterep.findById(id).get();
 	}
+
+	@Override
+	public List<Compte> retreiveAllCompteASC() {
+		// TODO Auto-generated method stub
+		return compterep.retreiveAllCompteASC();
+	}
+	@Override
+	public List<Compte> retreiveAllCompteDESC() {
+		// TODO Auto-generated method stub
+		return compterep.retreiveAllCompteDESC();
+	}
+
+	
 
 }

@@ -11,4 +11,7 @@ public interface ICreditService {
 	public void deleteCredit(int id);
 	public Credit updateCredit(Credit u);
 	public Credit retrieveCredit(int id);
+	public float sommeCréditsTotal();
+	public void sommeCréditsTotalParAnnee();
+	public float sommeCréditsRestAPayer ();
 }

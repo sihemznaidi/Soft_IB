@@ -1,6 +1,7 @@
 package tn.esprit.entity;
 
 import java.io.Serializable;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
@@ -18,10 +19,12 @@ import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="type_compte")
-public class Compte implements Serializable{
+public class Compte implements Serializable,Comparable<Compte>{
 @Id
 private String num_compte;
 @Temporal(TemporalType.DATE)
@@ -31,9 +34,11 @@ private float solde;
 //private TypeCompte type_compte;
 
 @OneToMany(cascade = CascadeType.ALL, mappedBy="compte")
+@JsonIgnore
 private List<Operation> operations;
 
 @ManyToOne
+@JsonIgnore
 private Client client_compte;
 
 @OneToOne //relation unidirectionnelle
@@ -48,6 +53,11 @@ private CarteBancaire carteBancaire;
 
 public CarteBancaire getCarteBancaire() {
 	return carteBancaire;
+}
+
+@Override
+public String toString() {
+	return "num_compte=" + num_compte + ", date_creation=" + date_creation + ", solde=" + solde + "]";
 }
 
 public void setCarteBancaire(CarteBancaire carteBancaire) {
@@ -115,6 +125,25 @@ public Banque getBanque_compte() {
 
 public void setBanque_compte(Banque banque_compte) {
 	this.banque_compte = banque_compte;
+}
+
+public Compte(String num_compte, float solde) {
+	super();
+	this.num_compte = num_compte;
+	this.solde = solde;
+}
+
+public Compte(String num_compte) {
+	super();
+	this.num_compte = num_compte;
+}
+
+@Override
+public int compareTo(Compte o) {
+	return (int)(o.getSolde()-this.solde);
+	
+//	return (int)( this.client_compte.getCredit().getMontant_total()-
+//			o.getClient_compte().getCredit().getMontant_total());
 }
 
 

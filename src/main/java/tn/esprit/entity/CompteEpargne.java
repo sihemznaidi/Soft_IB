@@ -39,4 +39,9 @@ public CompteEpargne(double taux) {
 	this.taux = taux;
 }
 
+@Override
+public String toString() {
+	return "CompteEpargne [taux=" + taux + ", toString()=" + super.toString() + "]";
+}
+
 }
